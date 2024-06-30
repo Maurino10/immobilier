@@ -14,10 +14,8 @@ public class Proprietaire {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private String id;
 
-    private String nom;
-
     @Column(name = "tel")
-    private int numero;
+    private String numero;
 
     public Proprietaire() {
     }
@@ -30,19 +28,11 @@ public class Proprietaire {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
