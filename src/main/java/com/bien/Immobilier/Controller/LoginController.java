@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bien.Immobilier.Helper.TokenProvider;
 import com.bien.Immobilier.Model.Admin;
+import com.bien.Immobilier.Model.Client;
+import com.bien.Immobilier.Model.Proprietaire;
 import com.bien.Immobilier.Service.AdminService;
+import com.bien.Immobilier.Service.ClientService;
+import com.bien.Immobilier.Service.ProprietaireService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -24,6 +28,12 @@ public class LoginController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private ProprietaireService propService;
+
+    @Autowired
+    private ClientService clientService;
     
     
     @GetMapping("/")
@@ -49,12 +59,29 @@ public class LoginController {
     
     
     @PostMapping("/logproprietaire")
-    public String logProprietaire() {
+    public String logProprietaire(Model model, HttpSession session, @RequestParam("numero") String numero) {
+        Proprietaire prop = propService.getUser(numero);
+        if (prop != null) {
+            String token = tokenProvider.generateAccessToken(prop);
+            session.setAttribute("token", token);
+            return "redirect:/logadmin";
+        }
         return "";
     }
     
     @GetMapping("/logClient")
     public String ShowLogClient() {
         return "Client/login";
+    }
+
+    @PostMapping("/logclient")
+    public String logClient(Model model, HttpSession session, @RequestParam("email") String email) {
+        Client client = clientService.getUser(email);
+        if (email != null) {
+            String token = tokenProvider.generateAccessToken(client);
+            session.setAttribute("token", token);
+            return "redirect:/logproprietaire";
+        }
+        return "";
     }
 }
