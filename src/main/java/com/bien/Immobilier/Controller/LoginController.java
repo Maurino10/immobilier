@@ -49,7 +49,7 @@ public class LoginController {
             session.setAttribute("token", token);
             return "redirect:/logclient";
         }
-        return "";
+        return "/index";
     }
     
     @GetMapping("/logproprietaire")
@@ -66,7 +66,8 @@ public class LoginController {
             session.setAttribute("token", token);
             return "redirect:/logadmin";
         }
-        return "";
+        return "/index";
+
     }
     
     @GetMapping(value = {"/", "/logclient"})
@@ -82,6 +83,7 @@ public class LoginController {
             session.setAttribute("token", token);
             return "redirect:/logproprietaire";
         }
-        return "";
+        return "/index";
+
     }
 }
