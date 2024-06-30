@@ -1,6 +1,8 @@
 package com.bien.Immobilier.Controller;
 
+import com.bien.Immobilier.Model.Client;
 import com.bien.Immobilier.Model.Proprietaire;
+import com.bien.Immobilier.Service.ClientService;
 import com.bien.Immobilier.Service.ProprietaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +31,9 @@ public class LoginController {
 
     @Autowired
     private ProprietaireService proprietaireService;
-    
+
+    @Autowired
+    private ClientService clientService;
     
     @GetMapping("/")
     public String ShowLogAdmin() {
@@ -42,14 +46,14 @@ public class LoginController {
         if (admin != null) {
             String token = tokenProvider.generateAccessToken(admin);
             session.setAttribute("token", token);
-            return "redirect:/logClient";
+            return "redirect:/logproprietaire";
         }
         return "";
     }
     
     @GetMapping("/logproprietaire")
     public String ShowLogProprietaire() {
-        return "login";
+        return "Proprietaire/login";
     }
     
     
@@ -59,13 +63,24 @@ public class LoginController {
         if (proprietaire != null) {
             String token = tokenProvider.generateAccessToken(proprietaire);
             session.setAttribute("token", token);
-            return "redirect:/logClient";
+            return "redirect:/logclient";
         }
         return "";
     }
     
-    @GetMapping("/logClient")
+    @GetMapping("/logclient")
     public String ShowLogClient() {
         return "Client/login";
+    }
+
+    @PostMapping("/logclient")
+    public String logClient(Model model, HttpSession session, @RequestParam("email") String email) {
+        Client client = clientService.getUser(email);
+        if (client != null) {
+            String token = tokenProvider.generateAccessToken(client);
+            session.setAttribute("token", token);
+            return "redirect:/logproprietaire";
+        }
+        return "";
     }
 }

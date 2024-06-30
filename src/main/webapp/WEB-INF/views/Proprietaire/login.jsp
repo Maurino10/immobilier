@@ -11,6 +11,6 @@
         <input type="text" name="nom">
         <button>Se connecter</button>
     </form>
-    <a href="/logproprietaire">prop</a>
+    <a href="/logProprietaire">prop</a>
 </body>
 </html>

@@ -7,10 +7,10 @@
 </head>
 <body>
     <form action="" method="post">
-        <label for="">Numero</label>
+        <label for="">Email</label>
         <input type="text" name="email">
         <button>Se connecter</button>
     </form>
-    <a href="/logclient">prop</a>
+    <a href="/logClient">prop</a>
 </body>
 </html>

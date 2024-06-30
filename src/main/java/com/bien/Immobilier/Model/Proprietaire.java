@@ -1,10 +1,6 @@
 package com.bien.Immobilier.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "proprietaire")
@@ -15,6 +11,7 @@ public class Proprietaire {
 
     private String nom;
 
+    @Column(name = "tel")
     private int numero;
 
     public Proprietaire() {
