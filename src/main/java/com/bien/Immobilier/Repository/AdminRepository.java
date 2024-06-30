@@ -10,5 +10,5 @@ import com.bien.Immobilier.Model.Admin;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, String>{
     @Query(value = "SELECT * FROM admin WHERE login = :login and password = :password", nativeQuery = true)
-     Admin findBylogin(@Param("login") String login, @Param("password") String password);
+     public Admin findBylogin(@Param("login") String login, @Param("password") String password);
 }

@@ -11,4 +11,5 @@ import com.bien.Immobilier.Model.Proprietaire;
 public interface ProprietaireRepository extends JpaRepository<Proprietaire, String> {
     @Query(value = "SELECT * FROM proprietaire WHERE tel = :numero", nativeQuery = true)
      Proprietaire findByNumero(@Param("numero") String numero);
+
 }

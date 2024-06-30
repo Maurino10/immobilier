@@ -63,7 +63,7 @@ public class LoginController {
         if (proprietaire != null) {
             String token = tokenProvider.generateAccessToken(proprietaire);
             session.setAttribute("token", token);
-            return "redirect:/logclient";
+            return "redirect:/proprietaire/biens";
         }
         return "";
     }
