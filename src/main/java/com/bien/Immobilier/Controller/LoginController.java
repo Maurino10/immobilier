@@ -36,7 +36,7 @@ public class LoginController {
     private ClientService clientService;
     
     
-    @GetMapping("/")
+    @GetMapping("/logadmin")
     public String ShowLogAdmin() {
         return "Admin/login";
     }
@@ -47,14 +47,14 @@ public class LoginController {
         if (admin != null) {
             String token = tokenProvider.generateAccessToken(admin);
             session.setAttribute("token", token);
-            return "redirect:/logClient";
+            return "redirect:/logclient";
         }
         return "";
     }
     
     @GetMapping("/logproprietaire")
     public String ShowLogProprietaire() {
-        return "login";
+        return "Proprietaire/login";
     }
     
     
@@ -69,7 +69,7 @@ public class LoginController {
         return "";
     }
     
-    @GetMapping("/logClient")
+    @GetMapping(value = {"/", "/logclient"})
     public String ShowLogClient() {
         return "Client/login";
     }

@@ -6,7 +6,7 @@
     <title>Login | Immobilier</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="/logclient" method="post">
         <label for="">Email</label>
         <input type="text" name="email">
         <button>Se connecter</button>

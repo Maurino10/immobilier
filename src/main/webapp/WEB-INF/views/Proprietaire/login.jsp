@@ -6,7 +6,7 @@
     <title>Login | Immobilier</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="/logproprietaire" method="post">
         <label for="">Numero</label>
         <input type="text" name="numero">
         <button>Se connecter</button>
