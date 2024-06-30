@@ -1,5 +1,7 @@
 package com.bien.Immobilier.Controller;
 
+import com.bien.Immobilier.Model.Proprietaire;
+import com.bien.Immobilier.Service.ProprietaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,9 @@ public class LoginController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private ProprietaireService proprietaireService;
     
     
     @GetMapping("/")
@@ -49,7 +54,13 @@ public class LoginController {
     
     
     @PostMapping("/logproprietaire")
-    public String logProprietaire() {
+    public String logProprietaire(Model model, HttpSession session, @RequestParam("nom") String nom) {
+        Proprietaire proprietaire = proprietaireService.getUser(nom);
+        if (proprietaire != null) {
+            String token = tokenProvider.generateAccessToken(proprietaire);
+            session.setAttribute("token", token);
+            return "redirect:/logClient";
+        }
         return "";
     }
     

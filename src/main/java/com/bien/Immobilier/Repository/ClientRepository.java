@@ -10,5 +10,5 @@ import com.bien.Immobilier.Model.Client;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, String> {
     @Query(value = "SELECT * FROM client WHERE email = :email", nativeQuery = true)
-    public Client findByEmail(@Param("email") String email);
+    Client findByEmail(@Param("email") String email);
 }

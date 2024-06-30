@@ -8,9 +8,9 @@
 <body>
     <form action="" method="post">
         <label for="">Numero</label>
-        <input type="text" name="email">
+        <input type="text" name="nom">
         <button>Se connecter</button>
     </form>
-    <a href="/logclient">prop</a>
+    <a href="/logproprietaire">prop</a>
 </body>
 </html>
