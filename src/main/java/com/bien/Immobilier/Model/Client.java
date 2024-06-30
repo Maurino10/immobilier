@@ -13,8 +13,6 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    private String nom;
-
     private String email;
 
     public Client() {
@@ -26,14 +24,6 @@ public class Client {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
     }
 
     public String getEmail() {
