@@ -84,6 +84,5 @@ public class LoginController {
             return "redirect:/logproprietaire";
         }
         return "/index";
-
     }
 }

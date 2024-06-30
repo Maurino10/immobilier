@@ -37,16 +37,16 @@ DROP DATABASE IF EXISTS mada_immo;
     --     nom VARCHAR NOT NULL
     -- );
     
-    -- CREATE SEQUENCE bien_seq;
-    -- CREATE TABLE IF NOT EXISTS bien (
-    --     id VARCHAR PRIMARY KEY DEFAULT CONCAT('BIEN', LPAD(nextval('bien_seq')::TEXT, 3, '0')),
-    --     nom VARCHAR NOT NULL,
-    --     description TEXT NOT NULL,
-    --     loyer NUMERIC NOT NULL,
-    --     id_proprietaire VARCHAR NOT NULL REFERENCES proprietaire(id),
-    --     id_region VARCHAR NOT NULL REFERENCES region(id),
-    --     id_type_de_bien VARCHAR NOT NULL REFERENCES type_de_bien(id)
-    -- );
+    CREATE SEQUENCE bien_seq;
+    CREATE TABLE IF NOT EXISTS bien (
+        id VARCHAR PRIMARY KEY DEFAULT CONCAT('BIEN', LPAD(nextval('bien_seq')::TEXT, 3, '0')),
+        nom VARCHAR NOT NULL,
+        description TEXT NOT NULL,
+        loyer NUMERIC NOT NULL,
+        id_proprietaire VARCHAR NOT NULL REFERENCES proprietaire(id),
+        id_region VARCHAR NOT NULL REFERENCES region(id),
+        id_type_de_bien VARCHAR NOT NULL REFERENCES type_de_bien(id)
+    );
     -- CREATE SEQUENCE photo_seq;
     -- CREATE TABLE IF NOT EXISTS photo(
     --     id VARCHAR PRIMARY KEY DEFAULT CONCAT('PHT', LPAD(nextval('photo_seq')::TEXT, 3, '0')),
